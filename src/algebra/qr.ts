@@ -13,3 +13,7 @@ class QRResult{
 //solving QR decomposition from mathjs.qr
 function QR(x:mat):QRResult {
     var result = mathjs_qr(x.val);
+    return new QRResult(new mat(result.Q), new mat(result.R));
+}
+
+export{QR, QRResult};
