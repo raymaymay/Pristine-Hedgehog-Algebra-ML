@@ -30,4 +30,4 @@ function cholesky(A: mat): mat {
     return L;
 }
 
-export
+export { cholesky };
