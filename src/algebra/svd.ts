@@ -39,4 +39,18 @@ interface SVDResult {
     v: number[][];
 }
 
-interface SVDPara
+interface SVDParameters {
+    /** if U is desired */
+    u?: boolean;
+    /** if V is desired */
+    v?: boolean;
+    /** constant used in the test for convergence; should not be smaller than the machine precision */
+    eps?: number;
+}
+
+interface SVDDestructured {
+    /** if U is desired */
+    u: boolean;
+    /** if V is desired */
+    v: boolean;
+    /** constant used in the
