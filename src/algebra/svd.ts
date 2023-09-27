@@ -22,4 +22,21 @@ export { SVD, SVDresult };
 
 interface SVDResult {
     /**
-     * A vector holding the singular values of `A`; they are non-negative but not necessari
+     * A vector holding the singular values of `A`; they are non-negative but not necessarily ordered in
+     *      decreasing sequence
+     */
+    q: number[];
+
+    /**
+     * Represents the matrix U with orthonormalized columns (`if withu is true` otherwise `u` is used as
+     *      a working storage)
+     */
+    u: number[][];
+
+    /**
+     * Represents the orthogonal matrix V (`if withv === true`, otherwise `v` is not used)
+     */
+    v: number[][];
+}
+
+interface SVDPara
