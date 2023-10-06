@@ -53,4 +53,12 @@ interface SVDDestructured {
     u: boolean;
     /** if V is desired */
     v: boolean;
-    /** constant used in the
+    /** constant used in the test for convergence; should not be smaller than the machine precision */
+    eps: number;
+}
+/** SVD procedure as explained in "Singular Value Decomposition and Least Squares Solutions. By G.H. Golub et al."
+ *
+ * This procedure computes the singular values and complete orthogonal decomposition of a real rectangular matrix A:
+ *
+ * `A = U * diag(q) * V(t), U(t) * U = V(t) * V = I`
+ *
