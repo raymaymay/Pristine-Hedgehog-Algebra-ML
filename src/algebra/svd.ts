@@ -62,3 +62,6 @@ interface SVDDestructured {
  *
  * `A = U * diag(q) * V(t), U(t) * U = V(t) * V = I`
  *
+ * where the arrays `a`, `u`, `v`, `q` represent `A`, `U`, `V`, `q` respectively. The actual parameters corresponding to `a`, `u`, `v` may
+ * all be identical unless `withu = withv = true`. In this case, the actual parameters corresponding to `u` and `v` must
+ * differ. `m >= n` is assumed (with `m = a.length` and `n = 
