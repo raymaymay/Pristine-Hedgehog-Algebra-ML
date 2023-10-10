@@ -77,3 +77,23 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
         v: true,
         eps: Math.pow(2, -52),
         ...options
+    };
+    const tol = 1e-64 / eps;
+
+    // throw error if a is not defined
+    if (!a) {
+        throw new TypeError("Matrix a is not defined");
+    }
+
+    // Householder's reduction to bidiagonal form
+
+    const n = a[0].length;
+    const m = a.length;
+
+    if (m < n) {
+        throw new TypeError("Invalid matrix: m < n");
+    }
+
+    let l1, c, f, h, s, y, z;
+
+    let l = 0,
