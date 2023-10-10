@@ -64,4 +64,16 @@ interface SVDDestructured {
  *
  * where the arrays `a`, `u`, `v`, `q` represent `A`, `U`, `V`, `q` respectively. The actual parameters corresponding to `a`, `u`, `v` may
  * all be identical unless `withu = withv = true`. In this case, the actual parameters corresponding to `u` and `v` must
- * differ. `m >= n` is assumed (with `m = a.length` and `n = 
+ * differ. `m >= n` is assumed (with `m = a.length` and `n = a[0].length`)
+ *
+ *  @param a  Represents the matrix A to be decomposed
+ *  @param options SVD options
+ *
+ * @returns {SVDResult} the result of the svd
+ */
+function SVD_(a: number[][], options?: SVDParameters): SVDResult {
+    let { u: withu, v: withv, eps }: SVDDestructured = {
+        u: true,
+        v: true,
+        eps: Math.pow(2, -52),
+        ...options
