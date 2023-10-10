@@ -97,3 +97,22 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
     let l1, c, f, h, s, y, z;
 
     let l = 0,
+        g = 0,
+        x = 0;
+    const e = [];
+
+    const u: number[][] = [];
+    const v: number[][] = [];
+
+    // Initialize u
+    for (let i = 0; i < m; i++) {
+        u[i] = new Array(n).fill(0);
+    }
+
+    // Initialize v
+    for (let i = 0; i < n; i++) {
+        v[i] = new Array(n).fill(0);
+    }
+
+    // Initialize q
+    const q: number[] = new Arra
