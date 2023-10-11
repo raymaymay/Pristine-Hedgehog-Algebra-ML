@@ -115,4 +115,21 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
     }
 
     // Initialize q
-    const q: number[] = new Arra
+    const q: number[] = new Array(n).fill(0);
+
+    // Copy array a in u
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            u[i][j] = a[i][j];
+        }
+    }
+
+    for (let i = 0; i < n; i++) {
+        e[i] = g;
+        s = 0;
+        l = i + 1;
+        for (let j = i; j < m; j++) {
+            s += Math.pow(u[j][i], 2);
+        }
+        if (s < tol) {
+            g = 0;
