@@ -143,4 +143,19 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
                 for (let k = i; k < m; k++) {
                     s += u[k][i] * u[k][j];
                 }
-                f = s / h
+                f = s / h;
+                for (let k = i; k < m; k++) {
+                    u[k][j] = u[k][j] + f * u[k][i];
+                }
+            }
+        }
+        q[i] = g;
+        s = 0;
+        for (let j = l; j < n; j++) {
+            s += Math.pow(u[i][j], 2);
+        }
+        if (s < tol) {
+            g = 0;
+        } else {
+            f = u[i][i + 1];
+            g = f < 0 ? Math.sqrt(s) : -
