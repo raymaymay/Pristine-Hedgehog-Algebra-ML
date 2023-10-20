@@ -158,4 +158,15 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
             g = 0;
         } else {
             f = u[i][i + 1];
-            g = f < 0 ? Math.sqrt(s) : -
+            g = f < 0 ? Math.sqrt(s) : -Math.sqrt(s);
+            h = f * g - s;
+            u[i][i + 1] = f - g;
+            for (let j = l; j < n; j++) {
+                e[j] = u[i][j] / h;
+            }
+            for (let j = l; j < m; j++) {
+                s = 0;
+                for (let k = l; k < n; k++) {
+                    s += u[j][k] * u[i][k];
+                }
+        
