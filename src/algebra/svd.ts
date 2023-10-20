@@ -169,4 +169,18 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
                 for (let k = l; k < n; k++) {
                     s += u[j][k] * u[i][k];
                 }
-        
+                for (let k = l; k < n; k++) {
+                    u[j][k] = u[j][k] + s * e[k];
+                }
+            }
+        }
+        y = Math.abs(q[i]) + Math.abs(e[i]);
+        if (y > x) {
+            x = y;
+        }
+    }
+
+    // Accumulation of right-hand transformations
+    if (withv) {
+        for (let i = n - 1; i >= 0; i--) {
+         
