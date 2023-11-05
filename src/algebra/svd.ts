@@ -208,4 +208,16 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
         }
     }
 
-    // Accumulation 
+    // Accumulation of left-hand transformations
+    if (withu) {
+        for (let i = n - 1; i >= 0; i--) {
+            l = i + 1;
+            g = q[i];
+            for (let j = l; j < n; j++) {
+                u[i][j] = 0;
+            }
+            if (g !== 0) {
+                h = u[i][i] * g;
+                for (let j = l; j < n; j++) {
+                    s = 0;
+                  
