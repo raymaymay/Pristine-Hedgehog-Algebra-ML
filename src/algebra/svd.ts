@@ -183,4 +183,14 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
     // Accumulation of right-hand transformations
     if (withv) {
         for (let i = n - 1; i >= 0; i--) {
-         
+            if (g !== 0) {
+                h = u[i][i + 1] * g;
+                for (let j = l; j < n; j++) {
+                    v[j][i] = u[i][j] / h;
+                }
+                for (let j = l; j < n; j++) {
+                    s = 0;
+                    for (let k = l; k < n; k++) {
+                        s += u[i][k] * v[k][j];
+                    }
+             
