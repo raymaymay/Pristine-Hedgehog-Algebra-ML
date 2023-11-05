@@ -193,4 +193,19 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
                     for (let k = l; k < n; k++) {
                         s += u[i][k] * v[k][j];
                     }
-             
+                    for (let k = l; k < n; k++) {
+                        v[k][j] = v[k][j] + s * v[k][i];
+                    }
+                }
+            }
+            for (let j = l; j < n; j++) {
+                v[i][j] = 0;
+                v[j][i] = 0;
+            }
+            v[i][i] = 1;
+            g = e[i];
+            l = i;
+        }
+    }
+
+    // Accumulation 
