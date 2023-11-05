@@ -220,4 +220,14 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
                 h = u[i][i] * g;
                 for (let j = l; j < n; j++) {
                     s = 0;
-                  
+                    for (let k = l; k < m; k++) {
+                        s += u[k][i] * u[k][j];
+                    }
+                    f = s / h;
+                    for (let k = i; k < m; k++) {
+                        u[k][j] = u[k][j] + f * u[k][i];
+                    }
+                }
+                for (let j = i; j < m; j++) {
+                    u[j][i] = u[j][i] / g;
+               
