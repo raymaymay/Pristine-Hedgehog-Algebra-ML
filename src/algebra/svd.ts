@@ -230,4 +230,18 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
                 }
                 for (let j = i; j < m; j++) {
                     u[j][i] = u[j][i] / g;
-               
+                }
+            } else {
+                for (let j = i; j < m; j++) {
+                    u[j][i] = 0;
+                }
+            }
+            u[i][i] = u[i][i] + 1;
+        }
+    }
+
+    // Diagonalization of the bidiagonal form
+    eps = eps * x;
+    let testConvergence;
+    for (let k = n - 1; k >= 0; k--) {
+        for (let iteration = 0; iteration < 50; iteration++) 
