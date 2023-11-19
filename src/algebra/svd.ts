@@ -244,4 +244,17 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
     eps = eps * x;
     let testConvergence;
     for (let k = n - 1; k >= 0; k--) {
-        for (let iteration = 0; iteration < 50; iteration++) 
+        for (let iteration = 0; iteration < 50; iteration++) {
+            // test-f-splitting
+            testConvergence = false;
+            for (l = k; l >= 0; l--) {
+                if (Math.abs(e[l]) <= eps) {
+                    testConvergence = true;
+                    break;
+                }
+                if (Math.abs(q[l - 1]) <= eps) {
+                    break;
+                }
+            }
+
+            if (!te
