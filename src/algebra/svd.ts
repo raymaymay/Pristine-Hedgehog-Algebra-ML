@@ -257,4 +257,14 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
                 }
             }
 
-            if (!te
+            if (!testConvergence) {
+                // cancellation of e[l] if l>0
+                c = 0;
+                s = 1;
+                l1 = l - 1;
+                for (let i = l; i < k + 1; i++) {
+                    f = s * e[i];
+                    e[i] = c * e[i];
+                    if (Math.abs(f) <= eps) {
+                        break; // goto test-f-convergence
+         
