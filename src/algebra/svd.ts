@@ -267,4 +267,13 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
                     e[i] = c * e[i];
                     if (Math.abs(f) <= eps) {
                         break; // goto test-f-convergence
-         
+                    }
+                    g = q[i];
+                    q[i] = Math.sqrt(f * f + g * g);
+                    h = q[i];
+                    c = g / h;
+                    s = -f / h;
+                    if (withu) {
+                        for (let j = 0; j < m; j++) {
+                            y = u[j][l1];
+                   
