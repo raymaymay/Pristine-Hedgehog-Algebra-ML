@@ -276,4 +276,17 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
                     if (withu) {
                         for (let j = 0; j < m; j++) {
                             y = u[j][l1];
-                   
+                            z = u[j][i];
+                            u[j][l1] = y * c + z * s;
+                            u[j][i] = -y * s + z * c;
+                        }
+                    }
+                }
+            }
+
+            // test f convergence
+            z = q[k];
+            if (l === k) {
+                // convergence
+                if (z < 0) {
+   
