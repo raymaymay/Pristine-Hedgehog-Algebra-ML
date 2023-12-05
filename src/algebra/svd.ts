@@ -289,4 +289,12 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
             if (l === k) {
                 // convergence
                 if (z < 0) {
-   
+                    // q[k] is made non-negative
+                    q[k] = -z;
+                    if (withv) {
+                        for (let j = 0; j < n; j++) {
+                            v[j][k] = -v[j][k];
+                        }
+                    }
+                }
+                break; // break out of iteration loop and move on to next k v
