@@ -297,4 +297,15 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
                         }
                     }
                 }
-                break; // break out of iteration loop and move on to next k v
+                break; // break out of iteration loop and move on to next k value
+            }
+
+            // Shift from bottom 2x2 minor
+            x = q[l];
+            y = q[k - 1];
+            g = e[k - 1];
+            h = e[k];
+            f = ((y - z) * (y + z) + (g - h) * (g + h)) / (2 * h * y);
+            g = Math.sqrt(f * f + 1);
+            f = ((x - z) * (x + z) + h * (y / (f < 0 ? f - g : f + g) - h)) / x;
+
