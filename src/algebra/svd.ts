@@ -309,3 +309,15 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
             g = Math.sqrt(f * f + 1);
             f = ((x - z) * (x + z) + h * (y / (f < 0 ? f - g : f + g) - h)) / x;
 
+            // Next QR transformation
+            c = 1;
+            s = 1;
+            for (let i = l + 1; i < k + 1; i++) {
+                g = e[i];
+                y = q[i];
+                h = s * g;
+                g = c * g;
+                z = Math.sqrt(f * f + h * h);
+                e[i - 1] = z;
+                c = f / z;
+       
