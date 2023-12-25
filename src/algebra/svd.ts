@@ -329,4 +329,15 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
                     for (let j = 0; j < n; j++) {
                         x = v[j][i - 1];
                         z = v[j][i];
-                        v[j][
+                        v[j][i - 1] = x * c + z * s;
+                        v[j][i] = -x * s + z * c;
+                    }
+                }
+                z = Math.sqrt(f * f + h * h);
+                q[i - 1] = z;
+                c = f / z;
+                s = h / z;
+                f = c * g + s * y;
+                x = -s * g + c * y;
+                if (withu) {
+       
