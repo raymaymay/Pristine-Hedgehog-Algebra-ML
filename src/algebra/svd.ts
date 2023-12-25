@@ -320,4 +320,13 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
                 z = Math.sqrt(f * f + h * h);
                 e[i - 1] = z;
                 c = f / z;
-       
+                s = h / z;
+                f = x * c + g * s;
+                g = -x * s + g * c;
+                h = y * s;
+                y = y * c;
+                if (withv) {
+                    for (let j = 0; j < n; j++) {
+                        x = v[j][i - 1];
+                        z = v[j][i];
+                        v[j][
