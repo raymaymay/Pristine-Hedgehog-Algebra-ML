@@ -340,4 +340,14 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
                 f = c * g + s * y;
                 x = -s * g + c * y;
                 if (withu) {
-       
+                    for (let j = 0; j < m; j++) {
+                        y = u[j][i - 1];
+                        z = u[j][i];
+                        u[j][i - 1] = y * c + z * s;
+                        u[j][i] = -y * s + z * c;
+                    }
+                }
+            }
+            e[l] = 0;
+            e[k] = f;
+            q[k]
