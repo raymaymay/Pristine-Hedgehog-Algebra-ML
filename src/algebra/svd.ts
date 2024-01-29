@@ -350,4 +350,14 @@ function SVD_(a: number[][], options?: SVDParameters): SVDResult {
             }
             e[l] = 0;
             e[k] = f;
-            q[k]
+            q[k] = x;
+        }
+    }
+
+    // Number below eps should be zero
+    for (let i = 0; i < n; i++) {
+        if (q[i] < eps) q[i] = 0;
+    }
+
+    return { u, q, v };
+}
