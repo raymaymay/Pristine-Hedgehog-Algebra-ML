@@ -4,4 +4,12 @@ export * from './algebra/inverse';
 export * from './algebra/lu';
 export * from './algebra/svd';
 export * from './data/csv';
-export * from '
+export * from './data/json';
+export * from './ml/linearRegression';
+export * from './ml/logisticRegression';
+export * from './ml/kmeans';
+export * from './stats/zScoreOfMat';
+export * from './matrix/vector';
+export * from './data/text';
+export * from './algebra/qr';
+export * from './algebra/det';
