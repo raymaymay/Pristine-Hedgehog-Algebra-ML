@@ -13,3 +13,8 @@ function json2mat(json_str: string): mat {
         return A;
     }
     throw new Error("Fail to read matrix from json");
+}
+
+export { json2mat, mat2json };
+
+   
