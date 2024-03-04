@@ -12,4 +12,10 @@ export function matrixTest() {
     matrixOperationTest();
 }
 
-function vcecto
+function vcectorTest() {
+    assert.ok(mean([1, 2, 3]) == 2 && std([1,2,3])==1, "vector test shouldn't fail.");
+}
+
+function matrixAllocationTest(){
+    var tmat = new mat().init([[1, 2], [3, 4]]);
+    assert.ok(tmat.val[0][0] == 1 && tmat.val[0][1] == 2 && tmat.val[1][0] == 3 && tmat.val[1][1] == 4 && tmat.rows == 2 && tmat.cols == 2, "matrix allocation test shouldn't fail.");
