@@ -19,3 +19,14 @@ function vcectorTest() {
 function matrixAllocationTest(){
     var tmat = new mat().init([[1, 2], [3, 4]]);
     assert.ok(tmat.val[0][0] == 1 && tmat.val[0][1] == 2 && tmat.val[1][0] == 3 && tmat.val[1][1] == 4 && tmat.rows == 2 && tmat.cols == 2, "matrix allocation test shouldn't fail.");
+}
+
+function matrixClearTest() {
+    var tmat = new mat().init([[1, 2], [3, 4]]);
+    tmat.clear();
+    assert(tmat.val.length == 0 && tmat.rows == 0 && tmat.cols == 0, "matrix free test shouldn't fail.");
+}
+
+function matrixVectorInitializationTest() {
+    var tmat = new mat().initVec([1, 2, 3]);
+    assert.ok(tmat.val.length == 1 && tmat.val[0].length==3 && tmat.rows == 1 && tmat.cols == 3, "vector 
