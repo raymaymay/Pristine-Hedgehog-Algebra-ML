@@ -36,4 +36,13 @@ function matrixRangeTest() {
     var mat1 = new mat().range(1, 10, 2);
     assert.ok(mat1.val[0][0] == 1 && mat1.val[0][4] == 9 && mat1.rows == 1 && mat1.cols == 5, "matrix range test 1 shouldn't fail.");
     var mat2 = new mat().range(5, 1, -2);
-    assert.ok(mat2.val[0][0] == 5 && mat2.val[0][1] == 3 && m
+    assert.ok(mat2.val[0][0] == 5 && mat2.val[0][1] == 3 && mat2.cols == 2, "matrix range test 2 shouldn't fail.");
+}
+
+function matrixCloneAndCopyTest() {
+    var mat1 = new mat().range(1, 4);
+    var mat2 = mat1.clone();
+    var mat3 = new mat().copy(mat1);
+    mat2.val[0][0] = 2;
+    mat1.val[0][0] = 3;
+    assert(mat1.val[0][0] == 3 && mat2.val[0][0] == 2 && mat3.val[0][0] == 1, "clone and copy test shouldn't fail"
