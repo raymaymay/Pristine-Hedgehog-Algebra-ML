@@ -45,4 +45,14 @@ function matrixCloneAndCopyTest() {
     var mat3 = new mat().copy(mat1);
     mat2.val[0][0] = 2;
     mat1.val[0][0] = 3;
-    assert(mat1.val[0][0] == 3 && mat2.val[0][0] == 2 && mat3.val[0][0] == 1, "clone and copy test shouldn't fail"
+    assert(mat1.val[0][0] == 3 && mat2.val[0][0] == 2 && mat3.val[0][0] == 1, "clone and copy test shouldn't fail");
+}
+
+function matrixInitTest() {
+    var m1 = new mat().Ns(3, 3, 1);
+    var m2 = new mat().ones(3, 3);
+    var m3 = new mat().Ns(3, 3, 0);
+    var m4 = new mat().zeros(3, 3);
+    var m5 = new mat().diag([1, 2,3]);
+    var m6 = new mat().zeros(3, 3).set(0, 0, 1).set(1, 1, 2).set(2, 2, 3);
+    assert(m1.equals(m2) && m3.equals(m4) && m5.equals(m6), "init test shouldn't f
