@@ -55,4 +55,13 @@ function matrixInitTest() {
     var m4 = new mat().zeros(3, 3);
     var m5 = new mat().diag([1, 2,3]);
     var m6 = new mat().zeros(3, 3).set(0, 0, 1).set(1, 1, 2).set(2, 2, 3);
-    assert(m1.equals(m2) && m3.equals(m4) && m5.equals(m6), "init test shouldn't f
+    assert(m1.equals(m2) && m3.equals(m4) && m5.equals(m6), "init test shouldn't fail");
+
+    assert(new mat().range(1, 2).reshape(2, 2).equals(new mat().init([[1, 0], [0, 0]])), "init test shouldn't fail");
+    var m7 = new mat().range(1, 100).reshape(2, 2);
+    assert(m7.rows ==2 && m7.cols==2, "init test shouldn't fail");
+}
+
+function matrixOperationTest() {
+    var msg = "operation test shouldn't fail";
+    assert(new mat().range(1, 10).resh
