@@ -64,4 +64,7 @@ function matrixInitTest() {
 
 function matrixOperationTest() {
     var msg = "operation test shouldn't fail";
-    assert(new mat().range(1, 10).resh
+    assert(new mat().range(1, 10).reshape(3, 3).equals(new mat().init([[1, 2, 3], [4, 5, 6], [7, 8, 9]])), msg);
+    assert(new mat().range(1, 10).reshape(3, 3).T().equals(new mat().init([[1, 4, 7], [2, 5, 8], [3, 6, 9]])), msg);
+    assert(new mat().range(0, 9).reshape(3, 3).each(x => x + 1).equals(new mat().range(1, 10).reshape(3, 3)), msg);
+    var m1 = new mat().ra
