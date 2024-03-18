@@ -67,4 +67,9 @@ function matrixOperationTest() {
     assert(new mat().range(1, 10).reshape(3, 3).equals(new mat().init([[1, 2, 3], [4, 5, 6], [7, 8, 9]])), msg);
     assert(new mat().range(1, 10).reshape(3, 3).T().equals(new mat().init([[1, 4, 7], [2, 5, 8], [3, 6, 9]])), msg);
     assert(new mat().range(0, 9).reshape(3, 3).each(x => x + 1).equals(new mat().range(1, 10).reshape(3, 3)), msg);
-    var m1 = new mat().ra
+    var m1 = new mat().range(1, 10).reshape(3, 3);
+    assert(m1.min() == 1 && m1.max() == 9, msg);
+    assert(m1.mean() == 5 && m1.sum() == 45 && m1.median() == 5 , msg);
+    assert(new mat().range(0, 9).reshape(3, 3).adds(1).equals(m1), msg);
+    assert(new mat().range(2, 11).reshape(3, 3).minuss(1).equals(m1), msg);
+    assert(m1.muls(2).equals(new mat().range(2, 20, 2).
