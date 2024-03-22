@@ -80,4 +80,11 @@ function matrixOperationTest() {
 
 function matrixOperationGPUTest() {
     var msg = "operation test shouldn't fail";
-    var m1 = new mat().range(1, 10).resha
+    var m1 = new mat().range(1, 10).reshape(2,2);
+    var m2 = new mat().range(1, 10).reshape(2, 2);
+    var r = new mat().init([[7, 10], [15, 22]]);
+    assert(mul(m1, m2).equals(r), msg);
+    assert(mul_gpu(m1, m2).equals(r), msg);
+    var r2 = new mat().init([[5, 11], [11, 25]]);
+    assert(x_mul_xT(m1).equals(r2), msg);
+}
