@@ -72,4 +72,12 @@ function matrixOperationTest() {
     assert(m1.mean() == 5 && m1.sum() == 45 && m1.median() == 5 , msg);
     assert(new mat().range(0, 9).reshape(3, 3).adds(1).equals(m1), msg);
     assert(new mat().range(2, 11).reshape(3, 3).minuss(1).equals(m1), msg);
-    assert(m1.muls(2).equals(new mat().range(2, 20, 2).
+    assert(m1.muls(2).equals(new mat().range(2, 20, 2).reshape(3, 3)), msg);
+    assert(m1.divs(2).equals(new mat().range(1, 10).reshape(3, 3)), msg);
+    //console.log(new mat().range(1, 10).reshape(2, 4).median());
+    assert(new mat().range(1, 10).reshape(2, 4).median() == 4.5, msg);
+}
+
+function matrixOperationGPUTest() {
+    var msg = "operation test shouldn't fail";
+    var m1 = new mat().range(1, 10).resha
