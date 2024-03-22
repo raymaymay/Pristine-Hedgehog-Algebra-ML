@@ -79,3 +79,66 @@ export class KMeans
 
             //updateh all centroids of each cluster
             for (var i =0;i< this.n_clusters;i++){
+
+                //initialize a vector of X.cols zeros
+                var mean_value = Array(this.x.cols).fill(0);
+                var counterOfDataInCurrentCluster =0;
+                for (var indexofX =0;indexofX < this.x.rows;indexofX++){
+                    if (this.indexOfCluster[indexofX] == i) {
+                        mean_value = add(mean_value, this.x.val[indexofX] );
+                        counterOfDataInCurrentCluster++;
+                    }
+                }
+
+                this.centroids[i] = div(mean_value, counterOfDataInCurrentCluster);
+            }
+
+        }
+
+    }
+
+    //initialize N centroids by randomly picking N samples
+    initializeNCentroids(){
+        var n_indices = [];
+        this.centroids = [];
+        //pick up n random number
+        for (var i=0;i<this.n_clusters;i++)
+        {
+            //pick a number from 0 to x.rows
+            n_indices.push( Math.floor(Math.random() * this.x.rows) );
+            
+            //push this data into the centroids vector
+            this.centroids.push(this.x.val[n_indices[i]]);
+        }
+
+        console.log(this.centroids);
+    }
+
+    //get labels of sample data
+    labels(): number[]{ return this.indexOfCluster; }
+
+    //todo: predict
+    predict(x_: mat){
+        //TODO
+    }
+    
+}
+
+//Euclidean distance (L2 norm)
+function L2(x: number[], y:number[]): number{
+    var sum = 0;
+    for (var i=0;i<x.length;i++) {sum+= (x[i]-y[i])*(x[i]-y[i]);}
+    return Math.sqrt(sum);
+}
+
+function add(x:number[], y:number[]):number[]{
+    var z = Array(x.length).fill(0);
+    for (var i=0;i<x.length;i++) z[i] = x[i] + y[i];
+    return z;
+}
+
+function div(x:number[], s:number):number[]{
+    var z = Array(x.length).fill(0);
+    for(var i=0;i<z.length;i++) z[i] = x[i] /s;
+    return z; 
+}
