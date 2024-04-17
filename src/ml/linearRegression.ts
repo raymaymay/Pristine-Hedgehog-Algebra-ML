@@ -29,4 +29,20 @@ class LinearRegression {
         //calculate w = (X.T() * X)^-1 * X.T() * y
 
         //(X.T() * X)
-        var xT_mul_x =
+        var xT_mul_x = mul(x.T(), x).log();
+
+        //(X.T() * X)^-1 
+        var xT_mul_x_inverse = inverse(xT_mul_x).log();
+
+        //(X.T() * X)^-1 * X.T()
+        var s3 = xT_mul_x_inverse.mul(x.T());
+
+        //w = (X.T() * X)^-1 * X.T() * y
+        this.w = s3.mul(y.T());
+
+        return this;
+    }
+
+    //x: M-by-N matrix. M data with N dimensions. Each row is an N-dim vector
+    //
+    predict(x_: 
