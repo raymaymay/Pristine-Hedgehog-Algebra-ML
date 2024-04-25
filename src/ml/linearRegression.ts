@@ -45,4 +45,16 @@ class LinearRegression {
 
     //x: M-by-N matrix. M data with N dimensions. Each row is an N-dim vector
     //
-    predict(x_: 
+    predict(x_: mat):mat {
+
+        //expan x_ with one more column with 1
+        var x = x_.resize(x_.rows, x_.cols + 1, 1);
+        return x.mul(this.w);
+    }
+
+
+}
+
+export {
+    LinearRegression
+};
